@@ -9,14 +9,9 @@ Pass arguments to a Python script:
     {
         "target": "build_system_input",
         "selector" : "source.python",
-        "linux": {
-            "shell_cmd": "xterm -e 'python $file_name %input% && echo && echo Press ENTER to continue && read line && exit'"
-        },
+        "shell_cmd": "xterm -e 'python $file_name %input%; echo && echo Press ENTER to continue && read line && exit'",
         "windows": {
-            "shell_cmd": "start cmd /k \"python $file_name %input% && pause && exit\""
-        },
-        "osx": {
-            "shell_cmd": "xterm -e 'python $file_name %input% && echo && echo Press ENTER to continue && read line && exit'"
+            "shell_cmd": "start cmd /k \"python $file_name %input% & pause && exit\""
         },
         "shell": true,
         "file_regex": "^\\s*File \"(...*?)\", line ([0-9]*)",
@@ -39,14 +34,9 @@ Pass compiler flags to clang:
         "variants": [
             {
                 "name": "Run Terminal",
-                "linux": {
-                    "shell_cmd": "clang++ -std=c++11 -Wno-c++98-compat-pedantic -Wno-newline-eof %input% -Wall \"$file\" -o \"$file_path/$file_base_name\" && xterm -e '$file_path/$file_base_name && echo && echo Press ENTER to continue && read line && exit'"
-                },
+                "shell_cmd": "clang++ -std=c++11 -Wno-c++98-compat-pedantic -Wno-newline-eof %input% -Wall \"$file\" -o \"$file_path/$file_base_name\" && xterm -e '$file_path/$file_base_name; echo && echo Press ENTER to continue && read line && exit'",
                 "windows": {
-                    "shell_cmd": "clang-cl -std=c++11 -Wno-c++98-compat-pedantic -Wno-newline-eof %input% /Wall \"$file\" /o \"$file_path/$file_base_name\" && start cmd /k \"$file_base_name && pause && exit\""
-                },
-                "osx": {
-                    "shell_cmd": "clang++ -std=c++11 -Wno-c++98-compat-pedantic -Wno-newline-eof %input% -Wall \"$file\" -o \"$file_path/$file_base_name\" && xterm -e '$file_path/$file_base_name && echo && echo Press ENTER to continue && read line && exit'"
+                    "shell_cmd": "clang-cl -std=c++11 -Wno-c++98-compat-pedantic -Wno-newline-eof %input% /Wall \"$file\" /o \"$file_path/$file_base_name\" && start cmd /k \"$file_base_name & pause && exit\""
                 },
                 "shell": true
             }
