@@ -2,7 +2,7 @@
 
 Extend default Sublime Text 3 build systems with input arguments.
 
-Chose the `build_system_input` target in any build system to prompt for an input, which is substituted for any occurence of `%input%` in `cmd` or `shell_cmd`. A default text can be provided using the new `input` key. Two simple use cases of this concept are shown below.
+Choose the `"build_system_input"` target in any build system to prompt for an input, which is substituted for any occurence of `%input%` in `"cmd"` or `"shell_cmd"`. A default text can be provided using the new `"input"` key. Two simple use cases of this concept are shown below.
 
 Pass arguments to a Python script:
 ```json
@@ -50,12 +50,14 @@ Pass compiler flags to clang:
                 },
                 "shell": true
             }
-        ]
+        ],
         "input": "default compiler flags"
     }
 ```
 
-**NOTE**: In contrast to the UNIX-style Sublime Text 3 build system variables, i. e. `$VAR` this package uses DOS-style variables, i. e. `%VAR%`. This is, because Sublime Text will try to substitute environment variables in `cmd` and `shell_cmd`, which will erase all unknown variables.
+**NOTE**: In contrast to the UNIX-style Sublime Text 3 build system variables, i. e. `$VAR`, this package uses DOS-style variables, i. e. `%VAR%`. This is, because Sublime Text will try to substitute environment variables in `"cmd"` and `"shell_cmd"`, which results in the erasion of all unknown variables.
 
 ## Installation
 Clone this repository to your Sublime Text 3 **Packages** folder. You can find it by using the menu: Preferences > Browse Packages...
+
+No configuration is necessary apart from using the `"build_system_input"` as target for your custom build system.
