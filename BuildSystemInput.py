@@ -34,7 +34,7 @@ class BuildSystemInputCommand(sublime_plugin.WindowCommand):
                     window.show_input_panel(
                         "{}:".format(name), inputs[name], do_next, None, None
                     )
-                except:
+                except StopIteration:
                     for name, value in zip(storage["name"], storage["value"]):
                         sub_kwargs(kwargs, name, value)
                     window.run_command("exec", kwargs)
