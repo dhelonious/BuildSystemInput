@@ -9,7 +9,7 @@ def rsub(name, input_, arg):
             arg[i] = rsub(name, input_, a)
         return arg
     else:
-        return re.sub("%{}%".format(name), input_, arg)
+        return arg.replace("%{}%".format(name), input_)
 
 def sub_kwargs(kwargs, name, value):
     if "cmd" in kwargs:
